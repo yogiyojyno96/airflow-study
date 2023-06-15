@@ -4,7 +4,7 @@ default:
 	@echo "Local examples:"
 	@echo "    make run        		# Starts a development server locally."
 run:
-	@poetry run uvicorn config.asgi:application --host 0.0.0.0 --port 9000 --reload
+	@poetry run uvicorn airflow_fastapi.main:app --reload
 
 test:
 	@echo [ === TEST === ]
