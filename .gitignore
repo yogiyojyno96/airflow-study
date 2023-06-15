@@ -136,3 +136,5 @@ dmypy.json
 
 .envrc
 *.bak
+
+.ruff_cache

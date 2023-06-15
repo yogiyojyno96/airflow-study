@@ -1,0 +1,50 @@
+select = [
+    "E",
+    "F",
+    "B",  # flake8-bugbear
+    "I",  # isort
+]
+line-length = 120
+target-version = "py311"
+include = ["*.py", "*.pyi"]
+exclude  = [
+  ".bzr",
+  ".direnv",
+  ".eggs", # exclude a few common directories in the
+  ".git",  # root of the project
+  ".git-rewrite",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "venv",
+  "docs",
+  "*/migrations/*",
+  "*/static/CACHE/*",
+ ]
+ignore = [
+    "E501",  # line too long, handled by black
+    "E203",  # whitespace before ‘,’, ‘;’, or ‘:’
+    "B008",  # Do not perform function call {name} in argument defaults
+    "B904",  # flake8-bugbear : Within an except clause, raise exceptions with raise ... from err
+    "B905",  # flake8-bugbear : zip() without an explicit strict= parameter set
+    "I001",  # isort : Import block is un-sorted or un-formatted
+]
+
+[mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity=10
+
+[isort]
+known-first-party = ["src"]
