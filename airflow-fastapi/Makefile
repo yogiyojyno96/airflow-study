@@ -9,3 +9,7 @@ run:
 test:
 	@echo [ === TEST === ]
 	@poetry run pytest -n auto --dist loadscope
+
+init_db:
+	@echo [ === Init DB === ]
+	@poetry run python3 airflow_fastapi/cli.py database init

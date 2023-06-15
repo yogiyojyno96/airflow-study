@@ -1,17 +1,15 @@
 import functools
 import re
-from typing import Annotated
+from typing import Annotated, Generator
 
 from fastapi import Depends
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
 from sqlalchemy.orm import sessionmaker, Session
-from starlette.requests import Request
 
 from airflow_fastapi import config
 
 engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
-
 
 
 
@@ -94,8 +92,12 @@ class CustomBase:
 Base = declarative_base(cls=CustomBase)
 
 
-def get_db(request: Request):
-    return request.state.db
+def get_db() -> Generator:
+    try:
+        db = SessionLocal()
+        yield db
+    finally:
+        db.close()
 
 
 DbSession = Annotated[Session, Depends(get_db)]
