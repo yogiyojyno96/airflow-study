@@ -18,7 +18,18 @@ ipython = "^8.14.0"
 sqlalchemy-utils = "^0.41.1"
 alembic = "^1.11.1"
 apache-airflow = "^2.6.1"
-
+apache-airflow-providers-amazon = "7.3.0"
+apache-airflow-providers-celery = "3.1.0"
+apache-airflow-providers-cncf-kubernetes = "5.2.2"
+apache-airflow-providers-common-sql = "1.3.4"
+apache-airflow-providers-docker = "3.5.1"
+apache-airflow-providers-elasticsearch = "4.4.0"
+apache-airflow-providers-ftp = "3.3.1"
+apache-airflow-providers-grpc = "3.1.0"
+apache-airflow-providers-hashicorp = "3.3.0"
+apache-airflow-providers-http = "4.2.0"
+apache-airflow-providers-mysql = "4.0.2"
+apache-airflow-providers-redis = "3.1.0"
 
 [build-system]
 requires = ["poetry-core"]
