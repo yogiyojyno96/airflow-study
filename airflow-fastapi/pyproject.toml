@@ -30,6 +30,7 @@ apache-airflow-providers-hashicorp = "3.3.0"
 apache-airflow-providers-http = "4.2.0"
 apache-airflow-providers-mysql = "4.0.2"
 apache-airflow-providers-redis = "3.1.0"
+pendulum = "^2.1.2"
 
 [build-system]
 requires = ["poetry-core"]
