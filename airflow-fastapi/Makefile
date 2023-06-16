@@ -1,4 +1,4 @@
-.PHONY: default run test
+.PHONY: default run test, lint
 
 default:
 	@echo "Local examples:"
@@ -13,3 +13,7 @@ test:
 init_db:
 	@echo [ === Init DB === ]
 	@poetry run python3 airflow_fastapi/cli.py database init
+
+lint:
+	@echo [ === Lint === ]
+	@poetry run ruff . --fix
