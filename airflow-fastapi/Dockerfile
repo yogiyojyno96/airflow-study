@@ -77,16 +77,11 @@ RUN addgroup --system app &&  \
     adduser --system --group app && \
     chown -R app:app ./ # chown all the files to the app user
 
-# ENV PYTHONPATH="${PYTHONPATH}:/Users/a202206018/Desktop/projects/airflow-study/airflow-fastapi"
-
-# TODO: log file 이슈로 추후에 변경 필요
 USER root
 
 # USER app
 COPY . .
 
-RUN ls -al
-
 EXPOSE 8000
 
-CMD ["uvicorn", "airflow_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["uvicorn", "airflow_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
