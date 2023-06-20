@@ -1,10 +1,9 @@
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
-from kubernetes.client import models as k8s
 import pendulum
     
 dag = DAG(
-    dag_id="test_k8s_1",
+    dag_id="test_k8s",
     schedule=None,
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
     catchup=False,
@@ -12,15 +11,11 @@ dag = DAG(
 )
 
 KubernetesPodOperator(
-    dag=dag,
-    namespace="example-namespace",
-    image="your-image-name:tag",
-    image_pull_secrets=[k8s.V1LocalObjectReference("testquay")],
+    name="hello-dry-run",
+    image="debian",
     cmds=["bash", "-cx"],
-    arguments=["echo", "10", "echo pwd"],
+    arguments=["echo", "10"],
     labels={"foo": "bar"},
-    name="airflow-private-image-pod",
-    is_delete_operator_pod=True,
-    in_cluster=True,
-    task_id="task-two",
+    task_id="dry_run_demo",
+    do_xcom_push=True,
 )
