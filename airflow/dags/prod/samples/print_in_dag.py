@@ -18,3 +18,20 @@ with DAG(
         return "Test"
 
     print_test()
+    
+
+with DAG(
+    dag_id="example_python_operator_print_3",
+    schedule=None,
+    start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
+    catchup=False,
+    tags=["samples"],
+) as dag:
+
+    @task()
+    def print_test():
+        """Print Numpy array."""
+        print("Test2")
+        return "Test2"
+
+    print_test()
