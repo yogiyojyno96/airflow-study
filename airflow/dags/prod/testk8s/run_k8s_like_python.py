@@ -3,7 +3,7 @@ from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import Kubernete
 import pendulum
     
 dag = DAG(
-    dag_id="test_k8s",
+    dag_id="test_k8s_django",
     schedule=None,
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
     catchup=False,
@@ -12,11 +12,9 @@ dag = DAG(
 
 KubernetesPodOperator(
     dag=dag,
-    name="hello-dry-run",
-    image="debian",
-    cmds=["bash", "-cx"],
-    arguments=["echo", "10"],
-    labels={"foo": "bar"},
-    task_id="dry_run_demo",
+    name="hello-django-run",
+    image="django",
+    cmds=["python3", "manage.py" "version"],
+    task_id="dry_run_demo_django",
     do_xcom_push=True,
 )
